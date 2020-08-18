@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool Cvalidity(string* addy)
+{
+	int at = 0;
+	for (int i = 0; i < (*addy).size(); i++)
+	{
+		if (((*addy)[i] == ' '))
+		{
+			return false;
+		}
+		else if((*addy)[i] == '@' )
+		{ 
+			at++;
+		}
+	}
+
+	if ((*addy).substr(((*addy).size() - 4), 4) != ".com" && (*addy).substr(((*addy).size() - 4), 4) != ".net" && (*addy).substr(((*addy).size() - 4), 4) != ".org" && (*addy).substr(((*addy).size() - 4), 4) != ".edu" && (*addy).substr(((*addy).size() - 4), 4) != ".gov" )
+	{
+		return false;
+	}
+
+	if (at == 1)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
+}
+
+int main()
+{
+	string e;
+	
+	cout << "Enter an email address: ";
+	cin >> e;
+
+	if (Cvalidity(&e))
+	{
+		cout << "This email address is valid" << endl;
+	}
+	else
+	{
+		cout << "This email address isn't valid" << endl;
+	}
+
+	cin.get();
+}
